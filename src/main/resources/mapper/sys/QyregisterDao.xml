@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.hbgj.modules.sys.dao.QyregisterDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.hbgj.modules.sys.entity.QyregisterEntity" id="qyregisterMap">
+        <result property="registerid" column="registerid"/>
+        <result property="qyname" column="qyname"/>
+        <result property="qyaddress" column="qyaddress"/>
+        <result property="hjappraise" column="hjappraise"/>
+        <result property="replynumber" column="replynumber"/>
+        <result property="yjyabanumber" column="yjyabanumber"/>
+        <result property="pwxkznumber" column="pwxkznumber"/>
+        <result property="psxkzumber" column="psxkzumber"/>
+        <result property="check" column="check"/>
+        <result property="supervise" column="supervise"/>
+        <result property="result" column="result"/>
+        <result property="transfer" column="transfer"/>
+        <result property="cffile" column="cffile"/>
+        <result property="wrmarker" column="wrmarker"/>
+        <result property="production" column="production"/>
+        <result property="honour" column="honour"/>
+        <result property="enmanager" column="enmanager"/>
+        <result property="enmanagername" column="enmanagername"/>
+        <result property="enmanagertel" column="enmanagertel"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+
+</mapper>

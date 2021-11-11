@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.hbgj.modules.sys.dao.PerregisterDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.hbgj.modules.sys.entity.PerregisterEntity" id="perregisterMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="telphone" column="telphone"/>
+        <result property="xmname" column="xmname"/>
+        <result property="xmaddress" column="xmaddress"/>
+        <result property="product" column="product"/>
+        <result property="reference" column="reference"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+
+</mapper>
