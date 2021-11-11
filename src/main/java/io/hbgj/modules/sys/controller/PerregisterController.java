@@ -77,7 +77,7 @@ public class PerregisterController {
      * 删除
      */
     @RequestMapping("/delete")
-//    @RequiresPermissions("generator:perregister:delete")
+//  www  @RequiresPermissions("generator:perregister:delete")
     public R delete(@RequestBody Integer[] ids){
 		perregisterService.removeByIds(Arrays.asList(ids));
 
