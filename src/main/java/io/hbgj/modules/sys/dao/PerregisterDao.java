@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.hbgj.modules.sys.entity.PerregisterEntity;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Map;
+
 /**
  * 
  * 
@@ -13,5 +15,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface PerregisterDao extends BaseMapper<PerregisterEntity> {
-	
+
+    PerregisterEntity login(Map<String, Object> map);
 }

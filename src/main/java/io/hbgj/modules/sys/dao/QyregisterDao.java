@@ -1,8 +1,11 @@
 package io.hbgj.modules.sys.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.hbgj.modules.sys.entity.PerregisterEntity;
 import io.hbgj.modules.sys.entity.QyregisterEntity;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.HashMap;
 
 /**
  * 
@@ -13,5 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface QyregisterDao extends BaseMapper<QyregisterEntity> {
-	
+
+    QyregisterEntity login(HashMap<String, Object> map2);
 }

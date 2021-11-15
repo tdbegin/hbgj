@@ -55,7 +55,7 @@ public class QyregisterEntity implements Serializable {
 	/**
 	 * 是否验收：“1”是，“0”否
 	 */
-	private Integer check;
+	private Integer qycheck;
 	/**
 	 * 是否在线监测：“1”是，“0”否
 	 */
@@ -95,7 +95,7 @@ public class QyregisterEntity implements Serializable {
 	/**
 	 * 环保管理人员联系方式
 	 */
-	private String enmanagertel;
+	private String telphone;
 	/**
 	 * 密码
 	 */

@@ -13,7 +13,7 @@
         <result property="yjyabanumber" column="yjyabanumber"/>
         <result property="pwxkznumber" column="pwxkznumber"/>
         <result property="psxkzumber" column="psxkzumber"/>
-        <result property="check" column="check"/>
+        <result property="qycheck" column="qycheck"/>
         <result property="supervise" column="supervise"/>
         <result property="result" column="result"/>
         <result property="transfer" column="transfer"/>
@@ -23,9 +23,11 @@
         <result property="honour" column="honour"/>
         <result property="enmanager" column="enmanager"/>
         <result property="enmanagername" column="enmanagername"/>
-        <result property="enmanagertel" column="enmanagertel"/>
+        <result property="telphone" column="telphone"/>
         <result property="password" column="password"/>
     </resultMap>
 
-
+    <select id="login" resultType="io.hbgj.modules.sys.entity.QyregisterEntity" parameterType="java.util.Map">
+        select * from qyregister where telphone=#{telphone} and password=#{password}
+    </select>
 </mapper>

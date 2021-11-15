@@ -16,5 +16,7 @@ import java.util.Map;
 public interface PerregisterService extends IService<PerregisterEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    PerregisterEntity login(Map<String, Object> map);
 }
 

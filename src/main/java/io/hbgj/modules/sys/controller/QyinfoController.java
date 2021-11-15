@@ -9,12 +9,7 @@ import io.hbgj.modules.sys.entity.QyinfoEntity;
 import io.hbgj.modules.sys.service.QyinfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -25,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021-11-11 14:19:06
  */
 @RestController
+@CrossOrigin
 @RequestMapping("hbgjjk/qyinfo")
 public class QyinfoController {
     @Autowired

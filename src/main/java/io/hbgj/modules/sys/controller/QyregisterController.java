@@ -6,6 +6,7 @@ import java.util.Map;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
 import io.hbgj.modules.sys.entity.QyregisterEntity;
+import io.hbgj.modules.sys.oauth2.Md5Util;
 import io.hbgj.modules.sys.service.QyregisterService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021-11-11 10:09:33
  */
 @RestController
-@RequestMapping("generator/qyregister")
+@RequestMapping("hbgjjk/qyregister")
 public class QyregisterController {
     @Autowired
     private QyregisterService qyregisterService;
@@ -60,7 +61,10 @@ public class QyregisterController {
      */
     @RequestMapping("/save")
 //    @RequiresPermissions("generator:qyregister:save")
-    public R save(@RequestBody QyregisterEntity qyregister){
+    public R save(@RequestBody QyregisterEntity qyregister) throws Exception {
+        String oldpassword = qyregister.getPassword();
+        String password = Md5Util.encodeByMd5(oldpassword);
+        qyregister.setPassword(password);
 		qyregisterService.save(qyregister);
 
         return R.ok();
