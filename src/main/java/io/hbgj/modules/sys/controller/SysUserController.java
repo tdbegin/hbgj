@@ -152,4 +152,5 @@ public class SysUserController extends AbstractController {
 		
 		return R.ok();
 	}
+
 }
