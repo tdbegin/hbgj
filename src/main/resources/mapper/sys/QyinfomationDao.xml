@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.hbgjjk.modules.sys.dao.QyinfomationDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.hbgj.modules.sys.entity.QyinfomationEntity" id="qyinfomationMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="legalper" column="legalper"/>
+        <result property="registeredcap" column="registeredcap"/>
+        <result property="companytype" column="companytype"/>
+        <result property="timelimit" column="timelimit"/>
+        <result property="acceptjg" column="acceptjg"/>
+        <result property="businessscope" column="businessscope"/>
+        <result property="regnumber" column="regnumber"/>
+        <result property="address" column="address"/>
+        <result property="qystate" column="qystate"/>
+        <result property="begindate" column="begindate"/>
+        <result property="markjg" column="markjg"/>
+        <result property="dbsnumber" column="dbsnumber"/>
+        <result property="wrwlb" column="wrwlb"/>
+        <result property="dqwrwzl" column="dqwrwzl"/>
+        <result property="dqwrwgl" column="dqwrwgl"/>
+        <result property="dawrwbz" column="dawrwbz"/>
+        <result property="fswrwzl" column="fswrwzl"/>
+        <result property="fswrwgl" column="fswrwgl"/>
+        <result property="fswrwbz" column="fswrwbz"/>
+        <result property="tradeinfo" column="tradeinfo"/>
+    </resultMap>
+
+
+</mapper>

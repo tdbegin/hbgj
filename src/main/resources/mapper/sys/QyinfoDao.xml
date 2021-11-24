@@ -13,5 +13,27 @@
         <result property="eninfopublic" column="eninfopublic"/>
     </resultMap>
 
+    <select id="findByName" parameterType="String" resultType="QyinfoEntity">
+        SELECT * FROM qyinfo WHERE qyname LIKE CONCAT(CONCAT('%', #{qyname}), '%')
+    </select>
+
+
+    <select id="findByCondition" parameterType="QyinfoEntity" resultType="map">
+        select * from qyinfo
+        <where>
+            <if test="null != qyname">
+                and qymane= #{qyname}
+            </if>
+            <if test="null != qyipo">
+                and qyipo= #{qyipo}
+            </if>
+            <if test="null != qyname">
+                and qymane= #{qyname}
+            </if>
+            <if test="null != qyname">
+                and qymane= #{qyname}
+            </if>
+        </where>
+    </select>
 
 </mapper>

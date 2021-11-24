@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.hbgj.modules.sys.entity.QyinfoEntity;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 
  * 
@@ -13,5 +15,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface QyinfoDao extends BaseMapper<QyinfoEntity> {
-	
+
+    List<QyinfoEntity> findByName(String qyname);
 }
