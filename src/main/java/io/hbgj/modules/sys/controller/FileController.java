@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @CrossOrigin
@@ -96,11 +98,11 @@ public class FileController {
     }
 
     @RequestMapping("/download")
-    public void downloadLocal(HttpServletResponse response /*,@RequestParam Map<String, Object> Mapper*/) throws FileNotFoundException {
-      /*  String filepath = String.valueOf(map.get("filepath"));
-        String filename = String.valueOf(map.get("filename"));*/
-       String filepath = "D:/dev1/";
-        String filename = "林书辉工作进度11.22.docx";
+    public void downloadLocal(HttpServletResponse response ,@RequestParam Map<String, Object> map) throws FileNotFoundException {
+        String filepath = String.valueOf(map.get("filepath"));
+        String filename = String.valueOf(map.get("filename"));
+       /*String filepath = "D:/dev1/";
+        String filename = "林书辉工作进度11.22.docx";*/
         // 下载本地文件
         String fileName = filename; // 文件的默认保存名
         // 读到流中
@@ -121,26 +123,49 @@ public class FileController {
         }
     }
 
-  /*  @RequestMapping("/uploads")
-    public String httpUpload(@RequestParam("files") MultipartFile files[]){
-        String format = sdf.format(new Date());
-        JSONObject object=new JSONObject();
-        for(int i=0;i<files.length;i++){
-            String fileName = files[i].getOriginalFilename();  // 文件名
-            File dest = new File(filePath +format+"_" +fileName);
-            if (!dest.getParentFile().exists()) {
-                dest.getParentFile().mkdirs();
-            }
-            try {
-                files[i].transferTo(dest);
-                object.put("address"+i, dest);
-            } catch (Exception e) {
-                object.put("result","程序错误，请重新上传");
-                return object.toString();
-            }
-        }
-        object.put("result","文件上传成功");
-        return object.toString();
-    }*/
+   @RequestMapping("/uploads")
+    public R httpUpload(@RequestParam("file") MultipartFile file,HttpServletRequest requet) throws UnknownHostException {
+       //时间
+       String format = sdf.format(new Date());
+       // 获取上传的文件名称
+       String fileName = file.getOriginalFilename();
+       // 时间 和 日期拼接
+//        String newFileName =format+"_"+ fileName;
+       String newFileName =getFourRandom()+fileName;
+       // 得到文件保存的位置以及新文件名
+       FilenameEntity filenameEntity = new FilenameEntity();
+       filenameEntity.setFilename(fileName);
+       filenameEntity.setFilepath(filePath);
+       filenameEntity.setTime(format);
 
+       File dest = new File(filePath + newFileName);
+       filenameEntity.setFilepath(filePath);
+       String bjip = InetAddress.getLocalHost().getHostAddress();
+       String portip= String.valueOf(requet.getLocalPort());
+
+       filenameEntity.setDomainadd(bjip+":"+portip+"/images/"+filenameEntity.getFilename());
+       try {
+           // 上传的文件被保存了
+           file.transferTo(dest);
+           filenameService.save(filenameEntity);
+           // 自定义返回的统一的 JSON 格式的数据，可以直接返回这个字符串也是可以的。
+           return R.ok("上传成功").put("address", dest).put("src", filenameEntity.getDomainadd());
+       } catch (IOException e) {
+           R.error();
+       }
+       // 待完成 —— 文件类型校验工作
+       return R.error("上传错误");
+    }
+
+
+    public static String getFourRandom(){
+        Random random = new Random();
+        String fourRandom = random.nextInt(10000) + "";
+        int randLength = fourRandom.length();
+        if(randLength<4){
+            for(int i=1; i<=4-randLength; i++)
+                fourRandom = "0" + fourRandom  ;
+        }
+        return fourRandom;
+    }
 }

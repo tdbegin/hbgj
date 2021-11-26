@@ -6,6 +6,8 @@
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.hbgj.modules.sys.entity.QyaqtjEntity" id="qyaqtjMap">
         <result property="id" column="id"/>
+        <result property="qyname" column="qyname"/>
+        <result property="address" column="address"/>
         <result property="safetyzdls" column="safetyzdls"/>
         <result property="safetyzdzx" column="safetyzdzx"/>
         <result property="safetyyhzl" column="safetyyhzl"/>
@@ -14,6 +16,7 @@
         <result property="safetyyjqy" column="safetyyjqy"/>
         <result property="safetybgqk" column="safetybgqk"/>
         <result property="others" column="others"/>
+        <result property="linknum" column="linknum"/>
     </resultMap>
 
 

@@ -3,11 +3,7 @@ package io.hbgj.modules.sys.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import io.hbgj.common.utils.PageUtils;
-import io.hbgj.common.utils.R;
-import io.hbgj.modules.sys.entity.AnnounceEntity;
-import io.hbgj.modules.sys.service.AnnounceService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import io.hbgj.modules.sys.entity.BussniessworkEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.hbgj.modules.sys.service.BussniessworkService;
+import io.hbgj.common.utils.PageUtils;
+import io.hbgj.common.utils.R;
 
 
 
@@ -23,21 +22,21 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ${author}
  * @email ${email}
- * @date 2021-11-22 13:24:22
+ * @date 2021-11-25 14:14:57
  */
 @RestController
-@RequestMapping("hbgjjk/announce")
-public class AnnounceController {
+@RequestMapping("hbgjjk/bussniesswork")
+public class BussniessworkController {
     @Autowired
-    private AnnounceService announceService;
+    private BussniessworkService bussniessworkService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-//    @RequiresPermissions("hbgjjk.modules.sys:announce:list")
+    //@RequiresPermissions("hbgjjk:bussniesswork:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = announceService.queryPage(params);
+        PageUtils page = bussniessworkService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -47,20 +46,20 @@ public class AnnounceController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-//    @RequiresPermissions("hbgjjk.modules.sys:announce:info")
+    //@RequiresPermissions("hbgj.modules.sys:bussniesswork:info")
     public R info(@PathVariable("id") Integer id){
-		AnnounceEntity announce = announceService.getById(id);
+		BussniessworkEntity bussniesswork = bussniessworkService.getById(id);
 
-        return R.ok().put("announce", announce);
+        return R.ok().put("bussniesswork", bussniesswork);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-//    @RequiresPermissions("hbgjjk.modules.sys:announce:save")
-    public R save(@RequestBody AnnounceEntity announce){
-		announceService.save(announce);
+    //@RequiresPermissions("hbgj.modules.sys:bussniesswork:save")
+    public R save(@RequestBody BussniessworkEntity bussniesswork){
+		bussniessworkService.save(bussniesswork);
 
         return R.ok();
     }
@@ -69,9 +68,9 @@ public class AnnounceController {
      * 修改
      */
     @RequestMapping("/update")
-//    @RequiresPermissions("hbgjjk.modules.sys:announce:update")
-    public R update(@RequestBody AnnounceEntity announce){
-		announceService.updateById(announce);
+    //@RequiresPermissions("hbgj.modules.sys:bussniesswork:update")
+    public R update(@RequestBody BussniessworkEntity bussniesswork){
+		bussniessworkService.updateById(bussniesswork);
 
         return R.ok();
     }
@@ -80,9 +79,9 @@ public class AnnounceController {
      * 删除
      */
     @RequestMapping("/delete")
-//    @RequiresPermissions("hbgjjk.modules.sys:announce:delete")
+    //@RequiresPermissions("hbgj.modules.sys:bussniesswork:delete")
     public R delete(@RequestBody Integer[] ids){
-		announceService.removeByIds(Arrays.asList(ids));
+		bussniessworkService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

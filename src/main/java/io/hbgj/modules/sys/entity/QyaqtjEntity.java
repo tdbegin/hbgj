@@ -25,6 +25,14 @@ public class QyaqtjEntity implements Serializable {
 	@TableId
 	private Integer id;
 	/**
+	 *企业名称
+	 */
+	private String qyname;
+	/**
+	 * 地址
+	 */
+	private String address;
+	/**
 	 * 安全生产责任制制定和落实情况，安全生产标准规范执行情况
 	 */
 	private String safetyzdls;
@@ -56,5 +64,9 @@ public class QyaqtjEntity implements Serializable {
 	 * 其它方面的情况
 	 */
 	private String others;
+	/**
+	 * 联系方式
+	 */
+	private String linknum;
 
 }

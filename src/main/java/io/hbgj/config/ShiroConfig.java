@@ -56,11 +56,13 @@ public class ShiroConfig {
         filterMap.put("/sys/login", "anon");
 
         //添加
+        filterMap.put("/static/**", "anon");
+        filterMap.put("/images/**", "anon");
+        filterMap.put("/css/**", "anon");
+        filterMap.put("/js/**", "anon");
         filterMap.put("/hbgjjk/**", "anon");
         filterMap.put("/files/**", "anon");
-//        filterMap.put("/dev1/**", "anon");
-//        filterMap.put("/generator/perregister/**", "anon");
-//        filterMap.put("/generator/qyregister/**", "anon");
+
 
         filterMap.put("/swagger/**", "anon");
         filterMap.put("/v2/api-docs", "anon");

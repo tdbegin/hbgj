@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021-11-22 13:24:21
  */
 @RestController
-@RequestMapping("hbgjjk.modules.sys/annnews")
+@RequestMapping("hbgjjk/annnews")
 public class AnnnewsController {
     @Autowired
     private AnnnewsService annnewsService;
