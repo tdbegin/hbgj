@@ -18,5 +18,9 @@ public interface FilenameService extends IService<FilenameEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     FilenameEntity findByid(int i);
+
+    FilenameEntity findByaddress(Integer id);
+
+    FilenameEntity getByDom(String domainadd);
 }
 

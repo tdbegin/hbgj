@@ -29,14 +29,6 @@ public class AnnounceEntity implements Serializable {
 	 */
 	private String name;
 	/**
-	 * 父类id
-	 */
-	private Integer parentid;
-	/**
-	 * 子类id
-	 */
-	private Integer sonid;
-	/**
 	 * 其它
 	 */
 	private String other;

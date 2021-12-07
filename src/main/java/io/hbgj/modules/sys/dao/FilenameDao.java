@@ -15,4 +15,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface FilenameDao extends BaseMapper<FilenameEntity> {
 
     FilenameEntity findById(int i);
+
+    FilenameEntity findByaddress(Integer id);
+
+    FilenameEntity getByDom(String domainadd);
 }

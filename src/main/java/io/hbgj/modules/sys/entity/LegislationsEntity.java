@@ -31,7 +31,7 @@ public class LegislationsEntity implements Serializable {
 	/**
 	 * 上传时间
 	 */
-	private Date uploadtime;
+	private String uploadtime;
 	/**
 	 * 内容
 	 */

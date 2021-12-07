@@ -47,7 +47,7 @@ public class BussniessworkEntity implements Serializable {
 	/**
 	 * 集采团购-委托项目需求说明
 	 */
-	private String explain;
+	private String exp;
 	/**
 	 * 集采团购招标-委托项目附件
 	 */
@@ -63,7 +63,7 @@ public class BussniessworkEntity implements Serializable {
 	/**
 	 * 期望完成时间
 	 */
-	private Date exptime;
+	private String exptime;
 	/**
 	 * 备着
 	 */

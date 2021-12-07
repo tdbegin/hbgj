@@ -5,9 +5,10 @@ server:
     max-threads: 1000
     min-spare-threads: 30
   port: 8080
+  URIEncoding: UTF-8
   connection-timeout: 5000ms
   servlet:
-    context-path: /hbgj
+    context-path: /
 
 spring:
   # 环境 dev|test|prod
@@ -21,6 +22,7 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+      file-size-threshold: 2KB # 文件写入磁盘的阈值 20211116
       enabled: true
   redis:
     open: false  # 是否开启redis缓存  true开启   false关闭
@@ -74,3 +76,15 @@ hbgj:
     # token有效时长，7天，单位秒
     expire: 604800
     header: token
+
+
+# 自定义文件保存路径20211116
+gorit:
+  file:
+    root:
+      path: D:\workspace\hbgj\src\main\resources\static\images\
+      path1: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev\
+      path2: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev1\
+      path3: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev2\
+      path4: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev3\
+      path5: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev4\

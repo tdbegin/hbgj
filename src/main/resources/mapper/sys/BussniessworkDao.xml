@@ -12,7 +12,7 @@
         <result property="linknum" column="linknum"/>
         <result property="emails" column="emails"/>
         <result property="project" column="project"/>
-        <result property="explain" column="explain"/>
+        <result property="exp" column="exp"/>
         <result property="accessory" column="accessory"/>
         <result property="hiscomm" column="hiscomm"/>
         <result property="budget" column="budget"/>

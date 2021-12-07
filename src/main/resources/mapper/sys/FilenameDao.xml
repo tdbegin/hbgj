@@ -17,5 +17,12 @@
         select * from filename where id=#{id}
     </select>
 
+    <select id="findByaddress" resultType="io.hbgj.modules.sys.entity.FilenameEntity" parameterType="integer">
+        select * from filename where domainadd =(SELECT zjintro.picaddress FROM zjintro WHERE id = #{id})
+    </select>
+
+    <select id="getByDom" resultType="io.hbgj.modules.sys.entity.FilenameEntity" parameterType="string">
+        select * from filename where domainadd = #{domainadd}
+    </select>
 
 </mapper>

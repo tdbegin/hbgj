@@ -7,8 +7,6 @@
     <resultMap type="io.hbgj.modules.sys.entity.AnnounceEntity" id="announceMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="parentid" column="parentid"/>
-        <result property="sonid" column="sonid"/>
         <result property="other" column="other"/>
     </resultMap>
 

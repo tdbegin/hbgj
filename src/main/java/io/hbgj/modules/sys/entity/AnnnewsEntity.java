@@ -27,7 +27,7 @@ public class AnnnewsEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Integer sonid;
+	private String parentname;
 	/**
 	 * 
 	 */
@@ -35,7 +35,7 @@ public class AnnnewsEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date newdate;
+	private String newdate;
 	/**
 	 * 
 	 */
@@ -48,5 +48,8 @@ public class AnnnewsEntity implements Serializable {
 	 * 
 	 */
 	private String newimagepath;
+
+
+	private String domainadd;
 
 }

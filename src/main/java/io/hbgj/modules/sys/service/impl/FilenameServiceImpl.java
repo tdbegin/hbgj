@@ -34,4 +34,14 @@ public class FilenameServiceImpl extends ServiceImpl<FilenameDao, FilenameEntity
         return filenameDao.findById(i);
     }
 
+    @Override
+    public FilenameEntity findByaddress(Integer id) {
+        return filenameDao.findByaddress(id);
+    }
+
+    @Override
+    public FilenameEntity getByDom(String domainadd) {
+        return filenameDao.getByDom(domainadd);
+    }
+
 }

@@ -5,14 +5,19 @@
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.hbgj.modules.sys.entity.AnnnewsEntity" id="annnewsMap">
-        <result property="newid" column="newId"/>
-        <result property="sonid" column="sonid"/>
-        <result property="newtitle" column="newTitle"/>
-        <result property="newdate" column="newDate"/>
-        <result property="newabstract" column="newAbstract"/>
-        <result property="newdesc" column="newDesc"/>
-        <result property="newimagepath" column="newImagePath"/>
+        <result property="newid" column="newid"/>
+        <result property="parentname" column="parentname"/>
+        <result property="newtitle" column="newtitle"/>
+        <result property="newdate" column="newdate"/>
+        <result property="newabstract" column="newabstract"/>
+        <result property="newdesc" column="newdesc"/>
+        <result property="newimagepath" column="newimagepath"/>
+        <result property="domainadd" column="domainadd"/>
     </resultMap>
 
+
+    <select id="findByName" resultType="Map" parameterType="string">
+        SELECT * FROM annnews WHERE parentname = #{name}
+    </select>
 
 </mapper>

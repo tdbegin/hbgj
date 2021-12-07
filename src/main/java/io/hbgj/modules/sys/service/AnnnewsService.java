@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.modules.sys.entity.AnnnewsEntity;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,7 @@ import java.util.Map;
 public interface AnnnewsService extends IService<AnnnewsEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<HashMap> findByName(String name);
 }
 
