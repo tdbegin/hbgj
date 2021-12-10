@@ -16,6 +16,7 @@ import io.hbgj.modules.sys.service.QyhbtjService;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
 
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -60,7 +61,6 @@ public class QyhbtjController {
     @RequestMapping("/save")
     //@RequiresPermissions("hbgj.modules.sys:qyhbtj:save")
     public R save(@RequestBody QyhbtjEntity qyhbtj){
-
 		qyhbtjService.save(qyhbtj);
 
         return R.ok();

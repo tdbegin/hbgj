@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="io.hbgj.hbgj.modules.sys.dao.BussniessworkDao">
+<mapper namespace="io.hbgj.modules.sys.dao.BussniessworkDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
 
@@ -20,5 +20,8 @@
         <result property="fallback" column="fallback"/>
     </resultMap>
 
+    <select id="queryList" resultType="map">
+        select  qyname ,project FROM bussniesswork ORDER BY id DESC
+    </select>
 
 </mapper>

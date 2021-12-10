@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.modules.sys.entity.BussniessworkEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface BussniessworkService extends IService<BussniessworkEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<Map> queryList();
 }
 

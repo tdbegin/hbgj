@@ -85,7 +85,8 @@ public class FileController {
         }
         String bjip = InetAddress.getLocalHost().getHostAddress();
         String portip= String.valueOf(requet.getLocalPort());
-        String dizhi = filenameEntity.getFilepath().substring(43);
+//        String dizhi = filenameEntity.getFilepath().substring(43);
+        String dizhi = filenameEntity.getFilepath().substring(64);
         filenameEntity.setDomainadd(bjip+":"+portip+dizhi+filenameEntity.getFilename());
         try {
             // 上传的文件被保存了

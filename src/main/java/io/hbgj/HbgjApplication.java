@@ -10,12 +10,19 @@ package io.hbgj;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 
 @SpringBootApplication
-public class HbgjApplication {
+public class HbgjApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(HbgjApplication.class);
+	}
+
+	public static void main(String[] args)  {
 		SpringApplication.run(HbgjApplication.class, args);
 	}
 

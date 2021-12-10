@@ -1,6 +1,7 @@
 package io.hbgj.modules.sys.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import io.hbgj.modules.sys.entity.BussniessworkEntity;
@@ -15,6 +16,7 @@ import io.hbgj.modules.sys.service.BussniessworkService;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
 
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -36,6 +38,7 @@ public class BussniessworkController {
     @RequestMapping("/list")
     //@RequiresPermissions("hbgjjk:bussniesswork:list")
     public R list(@RequestParam Map<String, Object> params){
+
         PageUtils page = bussniessworkService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -84,6 +87,16 @@ public class BussniessworkController {
 		bussniessworkService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+
+
+    @RequestMapping("/fabu")
+    //@RequiresPermissions("hbgjjk:bussniesswork:list")
+    public R query(@RequestParam Map<String, Object> params){
+        List<Map> list = bussniessworkService.queryList();
+
+        return R.ok().put("list", list);
     }
 
 }

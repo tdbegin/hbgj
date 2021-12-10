@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.hbgj.modules.sys.entity.BussniessworkEntity;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 
  * 
@@ -13,5 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface BussniessworkDao extends BaseMapper<BussniessworkEntity> {
-	
+
+    List<Map> queryList();
+
 }

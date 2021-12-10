@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 
  *
@@ -96,7 +99,7 @@ public class PerregisterController {
 
     @RequestMapping("/login")
 //  www  @RequiresPermissions("generator:perregister:delete")
-    public R login(@RequestParam Map<String, Object> map) throws Exception {
+    public R login(@RequestParam Map<String, Object> map, HttpServletRequest request) throws Exception {
         String oldpassword = String.valueOf(map.get("password"));
         String password = Md5Util.encodeByMd5(oldpassword);
         HashMap<String, Object> map2 = new HashMap<>();
@@ -107,8 +110,11 @@ public class PerregisterController {
         if (perregister==null&&qyregisterEntity==null){
             return R.error("手机号或密码错误").put("code", false);
         }else if (perregister==null&&qyregisterEntity!=null){
+            request.getSession().setAttribute("user","qyregisterEntity" );
             return R.ok("登陆成功").put("qyregisterEntity", qyregisterEntity);
         }
+
+        request.getSession().setAttribute("user","qyregisterEntity" );
         return R.ok("登陆成功").put("perregister", perregister);
     }
 }

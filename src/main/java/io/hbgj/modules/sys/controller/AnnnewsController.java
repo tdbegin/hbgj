@@ -104,7 +104,8 @@ public class AnnnewsController {
 
         String bjip = InetAddress.getLocalHost().getHostAddress();
         String portip= String.valueOf(requet.getLocalPort());
-        String dizhi = annnews.getDomainadd().substring(43);
+//        String dizhi = annnews.getDomainadd().substring(43);
+        String dizhi = annnews.getDomainadd().substring(64);
         annnews.setDomainadd(bjip+":"+portip+dizhi);
 		annnewsService.save(annnews);
 
