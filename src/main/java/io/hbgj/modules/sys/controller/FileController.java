@@ -83,7 +83,8 @@ public class FileController {
              dest = new File(filePath5 + newFileName);
                 filenameEntity.setFilepath(filePath5);
         }
-        String bjip = InetAddress.getLocalHost().getHostAddress();
+//        String bjip = InetAddress.getLocalHost().getHostAddress();
+        String bjip ="121.40.90.189";
         String portip= String.valueOf(requet.getLocalPort());
 //        String dizhi = filenameEntity.getFilepath().substring(43);
         String dizhi = filenameEntity.getFilepath().substring(64);
@@ -155,7 +156,8 @@ public class FileController {
 
        File dest = new File(filePath + newFileName);
        filenameEntity.setFilepath(filePath);
-       String bjip = InetAddress.getLocalHost().getHostAddress();
+//       String bjip = InetAddress.getLocalHost().getHostAddress();
+       String bjip ="121.40.90.189";
        String portip= String.valueOf(requet.getLocalPort());
 
        filenameEntity.setDomainadd(bjip+":"+portip+"/images/"+filenameEntity.getFilename());
@@ -192,7 +194,8 @@ public class FileController {
         String params = request.getQueryString();//返回请求行中的参数部分
         String host=request.getRemoteHost();//返回发出请求的客户机的主机名
         int port =request.getRemotePort();//返回发出请求的客户机的端口号。
-        String bjip = InetAddress.getLocalHost().getHostAddress();
+//        String bjip = InetAddress.getLocalHost().getHostAddress();
+        String bjip ="121.40.90.189";
         String localHost = String.valueOf(InetAddress.getLocalHost());
         String portip= String.valueOf(request.getLocalPort());
 

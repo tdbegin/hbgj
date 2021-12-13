@@ -5,7 +5,7 @@
 	<groupId>io.hbgj</groupId>
 	<artifactId>hbgj</artifactId>
 	<version>3.0.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<description>hbgj</description>
 
 	<parent>
@@ -47,7 +47,7 @@
 		<pack-name>${project.artifactId}-${project.version}.jar</pack-name>
 		<remote-addr>192.168.1.10:22</remote-addr>
 		<remote-username>root</remote-username>
-		<remote-passwd>123456</remote-passwd>
+		<remote-passwd>root</remote-passwd>
 	</properties>
 
 	<dependencies>
@@ -232,7 +232,18 @@
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
 		</dependency>
-	</dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<!--新增websocket-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.0.4.RELEASE</version>
+		</dependency>
+    </dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>

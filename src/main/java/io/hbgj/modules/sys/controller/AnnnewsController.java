@@ -102,7 +102,8 @@ public class AnnnewsController {
 //    @RequiresPermissions("hbgjjk.modules.sys:annnews:save")
     public R save(@RequestBody AnnnewsEntity annnews,HttpServletRequest requet) throws UnknownHostException {
 
-        String bjip = InetAddress.getLocalHost().getHostAddress();
+//        String bjip = InetAddress.getLocalHost().getHostAddress();
+        String bjip ="121.40.90.189";
         String portip= String.valueOf(requet.getLocalPort());
 //        String dizhi = annnews.getDomainadd().substring(43);
         String dizhi = annnews.getDomainadd().substring(64);

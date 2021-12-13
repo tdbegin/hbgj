@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import io.hbgj.config.WebSocket;
 import io.hbgj.modules.sys.entity.BussniessworkEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,8 @@ public class BussniessworkController {
     @Autowired
     private BussniessworkService bussniessworkService;
 
+    @Autowired
+    private WebSocket webSocket;
     /**
      * 列表
      */
@@ -63,7 +66,10 @@ public class BussniessworkController {
     //@RequiresPermissions("hbgj.modules.sys:bussniesswork:save")
     public R save(@RequestBody BussniessworkEntity bussniesswork){
 		bussniessworkService.save(bussniesswork);
-
+        // 群发调用
+        String qyname = bussniesswork.getQyname();
+        String project = bussniesswork.getProject();
+        webSocket.sendAllMessage("有新的业务:"+qyname+"--"+project);
         return R.ok();
     }
 
