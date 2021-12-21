@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-@Component
 @ServerEndpoint("/websocket/{shopId}")
+@Component
 //此注解相当于设置访问URL
 public class WebSocket {
 

@@ -52,4 +52,8 @@ public class PerregisterEntity implements Serializable {
 	 * 密码
 	 */
 	private String password;
+	/**
+	 * 角色
+	 */
+	private String role;
 }

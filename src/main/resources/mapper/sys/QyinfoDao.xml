@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="findByName" parameterType="String" resultType="QyinfoEntity">
-        SELECT * FROM qyinfo WHERE qyname LIKE CONCAT(CONCAT('%', #{qyname}), '%')
+        SELECT * FROM qyinfo WHERE qyname LIKE CONCAT(CONCAT('%', #{qyname}), '%') order by id desc
     </select>
 
 

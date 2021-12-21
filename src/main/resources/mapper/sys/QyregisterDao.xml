@@ -25,6 +25,7 @@
         <result property="enmanagername" column="enmanagername"/>
         <result property="telphone" column="telphone"/>
         <result property="password" column="password"/>
+        <result property="role" column="role"/>
     </resultMap>
 
     <select id="login" resultType="io.hbgj.modules.sys.entity.QyregisterEntity" parameterType="java.util.Map">

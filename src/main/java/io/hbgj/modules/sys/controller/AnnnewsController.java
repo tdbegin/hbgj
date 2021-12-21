@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
 
+import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
@@ -44,9 +45,12 @@ public class AnnnewsController {
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = annnewsService.queryPage(params);
         String name = String.valueOf(params.get("parentname"));
+        if (name == null){
+        Page pages = getPages(page.getCurrPage(), page.getPageSize(), page.getList());
+            return R.ok().put("page", pages);
+        }
         List<HashMap> list =annnewsService.findByName(name);
         Page pages = getPages(page.getCurrPage(), page.getPageSize(), list);
-//        page.setList(list);
         return R.ok().put("page", pages);
     }
 
@@ -89,6 +93,9 @@ public class AnnnewsController {
     public R info(@PathVariable("newid") Integer newid){
 		AnnnewsEntity annnews = annnewsService.getById(newid);
         String domainadd = annnews.getDomainadd();
+        if (StringUtils.isEmpty(domainadd)){
+            return R.ok().put("annnews", annnews);
+        }
         FilenameEntity byDom = filenameService.getByDom(domainadd);
         String filename = byDom.getFilename().substring(4);
 
@@ -100,16 +107,8 @@ public class AnnnewsController {
      */
     @RequestMapping("/save")
 //    @RequiresPermissions("hbgjjk.modules.sys:annnews:save")
-    public R save(@RequestBody AnnnewsEntity annnews,HttpServletRequest requet) throws UnknownHostException {
-
-//        String bjip = InetAddress.getLocalHost().getHostAddress();
-        String bjip ="121.40.90.189";
-        String portip= String.valueOf(requet.getLocalPort());
-//        String dizhi = annnews.getDomainadd().substring(43);
-        String dizhi = annnews.getDomainadd().substring(64);
-        annnews.setDomainadd(bjip+":"+portip+dizhi);
+    public R save(@RequestBody AnnnewsEntity annnews){
 		annnewsService.save(annnews);
-
         return R.ok();
     }
 

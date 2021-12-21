@@ -88,13 +88,13 @@ public class FileController {
         String portip= String.valueOf(requet.getLocalPort());
 //        String dizhi = filenameEntity.getFilepath().substring(43);
         String dizhi = filenameEntity.getFilepath().substring(64);
-        filenameEntity.setDomainadd(bjip+":"+portip+dizhi+filenameEntity.getFilename());
+        filenameEntity.setDomainadd("http://"+bjip+":"+portip+dizhi+filenameEntity.getFilename());
         try {
             // 上传的文件被保存了
             file.transferTo(dest);
             filenameService.save(filenameEntity);
             // 自定义返回的统一的 JSON 格式的数据，可以直接返回这个字符串也是可以的。
-            return R.ok("上传成功").put("address", dest).put("name", newFileName);
+            return R.ok("上传成功").put("address", filenameEntity.getDomainadd()).put("name", newFileName);
         } catch (IOException e) {
             R.error();
         }
@@ -102,45 +102,9 @@ public class FileController {
         return R.error("上传错误");
     }
 
-    @RequestMapping("/download")
-    public void downloadLocal(HttpServletResponse response ,@RequestParam Map<String, Object> map, HttpServletRequest request) throws Exception {
-        String domainadd = String.valueOf(map.get("domainadd"));
-        FilenameEntity filenameEntity= filenameService.getByDom(domainadd);
-
-        // 下载本地文件
-        String filename = filenameEntity.getFilename().toString(); // 文件的默认保存名
-        String filepath = filenameEntity.getFilepath();
-
-
-        BufferedInputStream bis = null;
-        BufferedOutputStream bos = null;
-        bis = new BufferedInputStream(new FileInputStream(filepath+filename));
-        bos = new BufferedOutputStream(response.getOutputStream());
-        long fileLength = new File(filePath).length();
-        response.setCharacterEncoding("UTF-8");
-
-        BufferedInputStream br = new BufferedInputStream( new FileInputStream(filepath+filename));// 文件的存放路径
-        byte[] buf = new byte[1024];
-        int len = 0;
-        // 设置输出的格式
-        response.reset();
-//        response.setContentType("bin");
-//        response.setContentType("multipart/form-data");
-
-        response.setContentType("application/x-download");
-//        response.addHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
-        response.setHeader("Content-disposition",String.format("attachment; filename=\"%s\"", filename));
-//        response.addHeader("Content-Disposition", "attachment;filename=" + new String(filename.getBytes("utf-8"),"ISO8859-1"));
-        // 循环取出流中的数据
-        OutputStream out = response.getOutputStream();
-        while ((len = br.read(buf)) > 0)
-            out.write(buf, 0, len);
-        br.close();
-        out.close();
-    }
 
    @RequestMapping("/uploads")
-    public R httpUpload(@RequestParam("file") MultipartFile file,HttpServletRequest requet) throws UnknownHostException {
+    public R httpUpload(@RequestParam(name = "file", required = false) MultipartFile file,HttpServletRequest requet) throws UnknownHostException {
        //时间
        String format = sdf.format(new Date());
        // 获取上传的文件名称
@@ -160,13 +124,13 @@ public class FileController {
        String bjip ="121.40.90.189";
        String portip= String.valueOf(requet.getLocalPort());
 
-       filenameEntity.setDomainadd(bjip+":"+portip+"/images/"+filenameEntity.getFilename());
+       filenameEntity.setDomainadd("http://"+bjip+":"+portip+"/images/"+filenameEntity.getFilename());
        try {
            // 上传的文件被保存了
            file.transferTo(dest);
            filenameService.save(filenameEntity);
            // 自定义返回的统一的 JSON 格式的数据，可以直接返回这个字符串也是可以的。
-           return R.ok("上传成功").put("address", dest).put("src", filenameEntity.getDomainadd());
+           return R.ok("上传成功").put("address", filenameEntity.getDomainadd()).put("src", filenameEntity.getDomainadd());
        } catch (IOException e) {
            R.error();
        }
@@ -186,28 +150,4 @@ public class FileController {
         return fourRandom;
     }
 
-    @RequestMapping("/ceshi")
-    public void ceshi(HttpServletRequest request) throws UnknownHostException {
-        String uri = request.getRequestURI();//返回请求行中的资源名称
-        String url = request.getRequestURL().toString();//获得客户端发送请求的完整url
-        String ip = request.getRemoteAddr();//返回发出请求的IP地址
-        String params = request.getQueryString();//返回请求行中的参数部分
-        String host=request.getRemoteHost();//返回发出请求的客户机的主机名
-        int port =request.getRemotePort();//返回发出请求的客户机的端口号。
-//        String bjip = InetAddress.getLocalHost().getHostAddress();
-        String bjip ="121.40.90.189";
-        String localHost = String.valueOf(InetAddress.getLocalHost());
-        String portip= String.valueOf(request.getLocalPort());
-
-        System.out.println(ip);
-        System.out.println(url);
-        System.out.println(uri);
-        System.out.println(params);
-        System.out.println(host);
-        System.out.println(port);
-        System.out.println(bjip);
-        System.out.println(localHost);
-        System.out.println(portip);
-
-    }
 }

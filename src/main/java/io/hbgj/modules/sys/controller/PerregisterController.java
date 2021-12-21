@@ -69,6 +69,13 @@ public class PerregisterController {
         String oldpassword = perregister.getPassword();
         String password = Md5Util.encodeByMd5(oldpassword);
         perregister.setPassword(password);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("telphone",perregister.getTelphone() );
+        map.put("password",perregister.getPassword() );
+        PerregisterEntity perregisterEntity =  perregisterService.login(map);
+        if (perregisterEntity!=null){
+            return R.error("账号已注册");
+        }
         perregisterService.save(perregister);
 
         return R.ok();
@@ -105,16 +112,21 @@ public class PerregisterController {
         HashMap<String, Object> map2 = new HashMap<>();
         map2.put("telphone",map.get("telphone") );
         map2.put("password",password );
-        PerregisterEntity perregister =  perregisterService.login(map2);
-        QyregisterEntity qyregisterEntity= qyregisterService.login(map2);
-        if (perregister==null&&qyregisterEntity==null){
-            return R.error("手机号或密码错误").put("code", false);
-        }else if (perregister==null&&qyregisterEntity!=null){
-            request.getSession().setAttribute("user","qyregisterEntity" );
-            return R.ok("登陆成功").put("qyregisterEntity", qyregisterEntity);
-        }
+        String role = String.valueOf(map.get("role"));
 
-        request.getSession().setAttribute("user","qyregisterEntity" );
-        return R.ok("登陆成功").put("perregister", perregister);
+        if (role.equals("personal")){
+            PerregisterEntity perregisterEntity =  perregisterService.login(map2);
+                if (perregisterEntity ==null){
+                    return R.error("手机号或密码错误").put("code", false);
+            }
+            return R.ok().put("perregister",perregisterEntity );
+        }else if (role.equals("company")){
+             QyregisterEntity qyregisterEntity= qyregisterService.login(map2);
+                if (qyregisterEntity==null){
+                     return R.error("手机号或密码错误").put("code", false);
+            }
+            return R.ok().put("qyregisterEntity",qyregisterEntity);
+        }
+             return R.error("选择角色错误");
     }
 }

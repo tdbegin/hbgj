@@ -101,4 +101,8 @@ public class QyregisterEntity implements Serializable {
 	 */
 	private String password;
 
+	/**
+	 * 角色
+	 */
+	private String role;
 }

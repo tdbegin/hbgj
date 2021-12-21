@@ -13,6 +13,7 @@
         <result property="product" column="product"/>
         <result property="reference" column="reference"/>
         <result property="password" column="password"/>
+        <result property="role" column="role"/>
     </resultMap>
 
 

@@ -37,4 +37,12 @@ public class LegislationsEntity implements Serializable {
 	 */
 	private String content;
 
+	/**
+	 * 文件路径
+	 */
+	private String domainadd;
+
+
+
+
 }

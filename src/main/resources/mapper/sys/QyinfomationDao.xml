@@ -5,6 +5,7 @@
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.hbgj.modules.sys.entity.QyinfomationEntity" id="qyinfomationMap">
+        <result property="zid" column="zid"/>
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="legalper" column="legalper"/>

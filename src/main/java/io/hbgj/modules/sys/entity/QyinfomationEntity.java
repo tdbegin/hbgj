@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -19,10 +18,12 @@ import lombok.Data;
 public class QyinfomationEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+
+    @TableId
+    private Integer zid;
 	/**
 	 * 
 	 */
-	@TableId
 	private Integer id;
 	/**
 	 * 名称
@@ -35,7 +36,7 @@ public class QyinfomationEntity implements Serializable {
 	/**
 	 * 注册资本
 	 */
-	private Integer registeredcap;
+	private String registeredcap;
 	/**
 	 * 公司类型
 	 */
@@ -67,7 +68,7 @@ public class QyinfomationEntity implements Serializable {
 	/**
 	 * 成立日期
 	 */
-	private Date begindate;
+	private String begindate;
 	/**
 	 * 登记机关
 	 */

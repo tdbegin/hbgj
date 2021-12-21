@@ -17,7 +17,7 @@
 
 
     <select id="findByName" resultType="Map" parameterType="string">
-        SELECT * FROM annnews WHERE parentname = #{name}
+        SELECT * FROM annnews WHERE parentname = #{name} order by newdate desc
     </select>
 
 </mapper>

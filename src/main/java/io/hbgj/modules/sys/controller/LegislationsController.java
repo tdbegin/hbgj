@@ -1,11 +1,15 @@
 package io.hbgj.modules.sys.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Map;
 
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
+import io.hbgj.modules.sys.entity.FilenameEntity;
 import io.hbgj.modules.sys.entity.LegislationsEntity;
+import io.hbgj.modules.sys.service.FilenameService;
 import io.hbgj.modules.sys.service.LegislationsService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -30,6 +34,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class LegislationsController {
     @Autowired
     private LegislationsService legislationsService;
+
+    @Autowired
+    private FilenameService filenameService;
 
     /**
      * 列表
@@ -50,8 +57,11 @@ public class LegislationsController {
 //    @RequiresPermissions("hbgjjk:legislations:info")
     public R info(@PathVariable("id") Integer id){
 		LegislationsEntity legislations = legislationsService.getById(id);
+        String domainadd = legislations.getDomainadd();
+        FilenameEntity byDom = filenameService.getByDom(domainadd);
+        String filename = byDom.getFilename().substring(4);
 
-        return R.ok().put("legislations", legislations);
+        return R.ok().put("legislations", legislations).put("filename", filename);
     }
 
     /**
@@ -59,8 +69,8 @@ public class LegislationsController {
      */
     @RequestMapping("/save")
 //    @RequiresPermissions("hbgjjk:legislations:save")
-    public R save(@RequestBody LegislationsEntity legislations){
-		legislationsService.save(legislations);
+    public R save(@RequestBody LegislationsEntity legislations)  {
+        legislationsService.save(legislations);
 
         return R.ok();
     }

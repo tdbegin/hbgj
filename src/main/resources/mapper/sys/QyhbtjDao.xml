@@ -13,7 +13,7 @@
         <result property="yjyabanumber" column="yjyabanumber"/>
         <result property="pwxkznumber" column="pwxkznumber"/>
         <result property="psxkzumber" column="psxkzumber"/>
-        <result property="check" column="check"/>
+        <result property="checkid" column="checkid"/>
         <result property="supervise" column="supervise"/>
         <result property="result" column="result"/>
         <result property="transfer" column="transfer"/>
@@ -22,7 +22,7 @@
         <result property="production" column="production"/>
         <result property="honour" column="honour"/>
         <result property="enmanager" column="enmanager"/>
-        <result property="enmanagertel" column="enmanagertel"/>
+        <result property="telphone" column="telphone"/>
     </resultMap>
 
 

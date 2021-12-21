@@ -1,6 +1,7 @@
 package io.hbgj.modules.sys.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.hbgj.common.utils.PageUtils;
@@ -65,7 +66,14 @@ public class QyregisterController {
         String oldpassword = qyregister.getPassword();
         String password = Md5Util.encodeByMd5(oldpassword);
         qyregister.setPassword(password);
-		qyregisterService.save(qyregister);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("telphone",qyregister.getTelphone() );
+        map.put("password",qyregister.getPassword() );
+        QyregisterEntity qyregisterEntity= qyregisterService.login(map);
+        if (qyregisterEntity!=null){
+            return R.error("账号已注册");
+        }
+        qyregisterService.save(qyregister);
 
         return R.ok();
     }
