@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.InetAddress;
-import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,7 +48,7 @@ public class FileController {
 
     // 文件上传 （可以多文件上传）
     @RequestMapping("/upload")
-    public R fileUploads(@RequestParam("file") MultipartFile file ,@RequestParam Map<String, Object> map,HttpServletRequest requet) throws Exception {
+    public R fileUploads(@RequestParam(name = "file", required = false) MultipartFile file ,@RequestParam Map<String, Object> map,HttpServletRequest requet) throws Exception {
         //时间
         String format = sdf.format(new Date());
         // 获取上传的文件名称
@@ -67,7 +65,7 @@ public class FileController {
 
         File dest = new File(filePath + newFileName);
         filenameEntity.setFilepath(filePath);
-        if (name.equalsIgnoreCase("规章制度")) {
+        if (name.equalsIgnoreCase("法律法规")) {
              dest = new File(filePath1 + newFileName);
                 filenameEntity.setFilepath(filePath1);
         } else if (name.equalsIgnoreCase("项目决策")) {

@@ -47,7 +47,7 @@ public class AnnnewsEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private String newimagepath;
+	private String firstname;
 
 
 	private String domainadd;

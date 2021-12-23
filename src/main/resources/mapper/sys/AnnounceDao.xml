@@ -7,8 +7,11 @@
     <resultMap type="io.hbgj.modules.sys.entity.AnnounceEntity" id="announceMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="other" column="other"/>
+        <result property="parname" column="parname"/>
     </resultMap>
 
+    <select id="findByPar" resultType="Map" parameterType="string">
+        SELECT * FROM announce WHERE parname= #{parname}
+    </select>
 
 </mapper>

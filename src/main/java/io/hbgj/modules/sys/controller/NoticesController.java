@@ -1,17 +1,11 @@
 package io.hbgj.modules.sys.controller;
 
 import java.io.File;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.*;
 
 import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.hbgj.common.utils.PageUtils;
-import io.hbgj.common.utils.R;
-import io.hbgj.modules.sys.entity.AnnnewsEntity;
 import io.hbgj.modules.sys.entity.FilenameEntity;
-import io.hbgj.modules.sys.service.AnnnewsService;
 import io.hbgj.modules.sys.service.FilenameService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
+import io.hbgj.modules.sys.entity.NoticesEntity;
+import io.hbgj.modules.sys.service.NoticesService;
+import io.hbgj.common.utils.PageUtils;
+import io.hbgj.common.utils.R;
+
 
 
 /**
@@ -29,49 +27,32 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author ${author}
  * @email ${email}
- * @date 2021-11-22 13:24:21
+ * @date 2021-12-22 10:51:38
  */
 @RestController
-@RequestMapping("hbgjjk/annnews")
-public class AnnnewsController {
+@RequestMapping("hbgjjk/notices")
+public class NoticesController {
     @Autowired
-    private AnnnewsService annnewsService;
+    private NoticesService noticesService;
+
     @Autowired
     private FilenameService filenameService;
+
     /**
      * 列表
      */
     @RequestMapping("/list")
-//    @RequiresPermissions("hbgjjk.modules.sys:annnews:list")
+    ////@RequiresPermissions("hbgj.modules.sys:notices:list")
     public R list(@RequestParam Map<String, Object> params){
-       /* PageUtils page = annnewsService.queryPage(params);
-        String name = String.valueOf(params.get("parentname"));
-        if (name == null){
-        Page pages = getPages(page.getCurrPage(), page.getPageSize(), page.getList());
-            return R.ok().put("page", pages);
-        }*/
-        String parentname = String.valueOf(params.get("parentname"));
-        String firstname = String.valueOf(params.get("firstname"));
+        String role = String.valueOf(params.get("role"));
         Integer limit =  Integer.valueOf(String.valueOf(params.get("limit"))) ;
         Integer page1 = Integer.valueOf(String.valueOf(params.get("page"))) ;
-        List<HashMap> list =annnewsService.findByName(parentname,firstname);
-        Page pages = getPages(page1, limit, list);
-        return R.ok().put("page", pages);
-    }
+        List<HashMap> list =noticesService.findByRole(role);
 
-/*    @RequestMapping("/htlist")
-//    @RequiresPermissions("hbgjjk.modules.sys:annnews:list")
-    public R htlist(@RequestParam Map<String, Object> params){
-        String parentname = String.valueOf(params.get("parentname"));
-        if (parentname==null){
-            return R.error("请选择分类");
-        }
-        Integer limit =  Integer.valueOf(String.valueOf(params.get("limit"))) ;
-        Integer page1 = Integer.valueOf(String.valueOf(params.get("page"))) ;
-        List<HashMap> list =annnewsService.findByHtName(parentname);
         Page pages = getPages(page1, limit, list);
         return R.ok().put("page", pages);
-    }*/
+
+    }
 
     //listtopage
     private Page getPages(Integer currentPage, Integer pageSize, List list) {
@@ -109,27 +90,28 @@ public class AnnnewsController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{newid}")
-//    @RequiresPermissions("hbgjjk.modules.sys:annnews:info")
-    public R info(@PathVariable("newid") Integer newid){
-		AnnnewsEntity annnews = annnewsService.getById(newid);
-        String domainadd = annnews.getDomainadd();
-        if (StringUtils.isEmpty(domainadd)){
-            return R.ok().put("annnews", annnews);
+    @RequestMapping("/info/{id}")
+    //@RequiresPermissions("hbgj.modules.sys:notices:info")
+    public R info(@PathVariable("id") Integer id){
+		NoticesEntity notices = noticesService.getById(id);
+        String fallback = notices.getDomainadd();
+        if (StringUtils.isEmpty(fallback)){
+            return R.ok().put("notices", notices);
         }
-        FilenameEntity byDom = filenameService.getByDom(domainadd);
+        FilenameEntity byDom = filenameService.getByDom(fallback);
         String filename = byDom.getFilename().substring(4);
 
-        return R.ok().put("annnews", annnews).put("filename", filename);
+        return R.ok().put("notices", notices).put("filename", filename);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-//    @RequiresPermissions("hbgjjk.modules.sys:annnews:save")
-    public R save(@RequestBody AnnnewsEntity annnews){
-		annnewsService.save(annnews);
+    //@RequiresPermissions("hbgj.modules.sys:notices:save")
+    public R save(@RequestBody NoticesEntity notices){
+		noticesService.save(notices);
+
         return R.ok();
     }
 
@@ -137,9 +119,9 @@ public class AnnnewsController {
      * 修改
      */
     @RequestMapping("/update")
-//    @RequiresPermissions("hbgjjk.modules.sys:annnews:update")
-    public R update(@RequestBody AnnnewsEntity annnews){
-		annnewsService.updateById(annnews);
+    //@RequiresPermissions("hbgj.modules.sys:notices:update")
+    public R update(@RequestBody NoticesEntity notices){
+		noticesService.updateById(notices);
 
         return R.ok();
     }
@@ -148,9 +130,9 @@ public class AnnnewsController {
      * 删除
      */
     @RequestMapping("/delete")
-//    @RequiresPermissions("hbgjjk.modules.sys:annnews:delete")
-    public R delete(@RequestBody Integer[] newids){
-        List<Integer> integers = Arrays.asList(newids);
+    //@RequiresPermissions("hbgj.modules.sys:notices:delete")
+    public R delete(@RequestBody Integer[] ids){
+        List<Integer> integers = Arrays.asList(ids);
 
         for (int i = 0; i < integers.size(); i++) {
             FilenameEntity filename = filenameService.findByaddress(integers.get(i));
@@ -164,7 +146,7 @@ public class AnnnewsController {
                 }
             }
         }
-		annnewsService.removeByIds(Arrays.asList(newids));
+		noticesService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

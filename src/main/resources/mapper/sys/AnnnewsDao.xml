@@ -11,13 +11,17 @@
         <result property="newdate" column="newdate"/>
         <result property="newabstract" column="newabstract"/>
         <result property="newdesc" column="newdesc"/>
-        <result property="newimagepath" column="newimagepath"/>
+        <result property="firstname" column="firstname"/>
         <result property="domainadd" column="domainadd"/>
     </resultMap>
 
 
     <select id="findByName" resultType="Map" parameterType="string">
-        SELECT * FROM annnews WHERE parentname = #{name} order by newdate desc
+        SELECT * FROM annnews WHERE parentname = #{parentname} and firstname= #{firstname} order by newdate desc
+    </select>
+
+    <select id="findByHtName" resultType="Map" parameterType="string">
+        SELECT * FROM annnews WHERE parentname = #{parentname} order by newdate desc
     </select>
 
 </mapper>

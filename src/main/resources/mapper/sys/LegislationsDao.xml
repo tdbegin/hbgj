@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="io.hbgjjk.dao.LegislationsDao">
+<mapper namespace="io.hbgj.modules.sys.dao.LegislationsDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.hbgj.modules.sys.entity.LegislationsEntity" id="legislationsMap">
         <result property="id" column="id"/>
+        <result property="zone" column="zone"/>
         <result property="title" column="title"/>
         <result property="uploadtime" column="uploadtime"/>
         <result property="content" column="content"/>
         <result property="domainadd" column="domainadd"/>
     </resultMap>
+
+    <select id="findByZone" resultType="Map" parameterType="string">
+        SELECT l.id,l.`title`,l.`uploadtime` FROM legislations l WHERE zone =#{zone} ORDER BY uploadtime DESC
+    </select>
 
 
 </mapper>

@@ -67,6 +67,6 @@ public class BussniessworkEntity implements Serializable {
 	/**
 	 * 备着
 	 */
-	private String fallback;
+	private String domainadd;
 
 }

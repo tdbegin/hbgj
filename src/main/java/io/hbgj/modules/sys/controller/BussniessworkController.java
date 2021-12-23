@@ -1,11 +1,15 @@
 package io.hbgj.modules.sys.controller;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.druid.util.StringUtils;
 import io.hbgj.config.WebSocket;
 import io.hbgj.modules.sys.entity.BussniessworkEntity;
+import io.hbgj.modules.sys.entity.FilenameEntity;
+import io.hbgj.modules.sys.service.FilenameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +39,8 @@ public class BussniessworkController {
 
     @Autowired
     private WebSocket webSocket;
+    @Autowired
+    private FilenameService filenameService;
     /**
      * 列表
      */
@@ -55,8 +61,14 @@ public class BussniessworkController {
     //@RequiresPermissions("hbgj.modules.sys:bussniesswork:info")
     public R info(@PathVariable("id") Integer id){
 		BussniessworkEntity bussniesswork = bussniessworkService.getById(id);
+        String domainadd = bussniesswork.getDomainadd();
+        if (StringUtils.isEmpty(domainadd)){
+            return R.ok().put("bussniesswork", bussniesswork);
+        }
+        FilenameEntity byDom = filenameService.getByDom(domainadd);
+        String filename = byDom.getFilename().substring(4);
 
-        return R.ok().put("bussniesswork", bussniesswork);
+        return R.ok().put("bussniesswork", bussniesswork).put("filename", filename);
     }
 
     /**
@@ -90,6 +102,20 @@ public class BussniessworkController {
     @RequestMapping("/delete")
     //@RequiresPermissions("hbgj.modules.sys:bussniesswork:delete")
     public R delete(@RequestBody Integer[] ids){
+        List<Integer> integers = Arrays.asList(ids);
+
+        for (int i = 0; i < integers.size(); i++) {
+            FilenameEntity filename = filenameService.findByaddress(integers.get(i));
+            if (null !=filename){
+                File folder = new File(filename.getFilepath());
+                File[] files = folder.listFiles();
+                for(File file:files){
+                    if(file.getName().equals(filename.getFilename())){
+                        file.delete();
+                    }
+                }
+            }
+        }
 		bussniessworkService.removeByIds(Arrays.asList(ids));
 
         return R.ok();

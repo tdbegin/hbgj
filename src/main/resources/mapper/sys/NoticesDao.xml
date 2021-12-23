@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.hbgj.modules.sys.dao.NoticesDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.hbgj.modules.sys.entity.NoticesEntity" id="noticesMap">
+        <result property="id" column="id"/>
+        <result property="role" column="role"/>
+        <result property="title" column="title"/>
+        <result property="fbtime" column="fbtime"/>
+        <result property="contents" column="contents"/>
+        <result property="domainadd" column="domainadd"/>
+    </resultMap>
+
+    <select id="findByRole" parameterType="string" resultType="Map">
+        SELECT * FROM notices WHERE role = #{role} ORDER BY fbtime DESC
+    </select>
+</mapper>

@@ -33,9 +33,14 @@ public class AnnnewsServiceImpl extends ServiceImpl<AnnnewsDao, AnnnewsEntity> i
     }
 
     @Override
-    public List<HashMap> findByName(String name) {
+    public List<HashMap> findByName(String parentname, String firstname) {
 
-        return annnewsDao.findByName(name);
+        return annnewsDao.findByName(parentname,firstname);
+    }
+
+    @Override
+    public List<HashMap> findByHtName(String parentname) {
+        return annnewsDao.findByHtName(parentname);
     }
 
 }

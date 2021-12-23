@@ -17,7 +17,7 @@
         <result property="hiscomm" column="hiscomm"/>
         <result property="budget" column="budget"/>
         <result property="exptime" column="exptime"/>
-        <result property="fallback" column="fallback"/>
+        <result property="domainadd" column="domainadd"/>
     </resultMap>
 
     <select id="queryList" resultType="map">

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.hbgj.modules.sys.entity.AnnnewsEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,5 +19,7 @@ import java.util.List;
 @Mapper
 public interface AnnnewsDao extends BaseMapper<AnnnewsEntity> {
 
-    List<HashMap> findByName(String name);
+    List<HashMap> findByName(@Param("parentname")String parentname,@Param("firstname") String firstname);
+
+    List<HashMap> findByHtName(String parentname);
 }

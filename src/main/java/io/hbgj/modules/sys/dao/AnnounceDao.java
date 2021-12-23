@@ -4,6 +4,9 @@ import io.hbgj.modules.sys.entity.AnnounceEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * 
  * 
@@ -13,5 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AnnounceDao extends BaseMapper<AnnounceEntity> {
-	
+
+    List<HashMap> findByPar(String parname);
 }

@@ -19,6 +19,8 @@ public interface AnnnewsService extends IService<AnnnewsEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 
-    List<HashMap> findByName(String name);
+    List<HashMap> findByName(String name, String firstname);
+
+    List<HashMap> findByHtName(String parentname);
 }
 

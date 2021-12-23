@@ -12,25 +12,37 @@ import lombok.Data;
  * 
  * @author ${author}
  * @email ${email}
- * @date 2021-11-22 13:24:22
+ * @date 2021-12-22 10:51:38
  */
 @Data
-@TableName("announce")
-public class AnnounceEntity implements Serializable {
+@TableName("notices")
+public class NoticesEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 公告id
+	 * 通知公告id
 	 */
 	@TableId
 	private Integer id;
 	/**
-	 * 名称
+	 * 角色
 	 */
-	private String name;
+	private String role;
 	/**
-	 * 父类名称
+	 * 标题
 	 */
-	private String parname;
+	private String title;
+	/**
+	 * 发布时间
+	 */
+	private String fbtime;
+	/**
+	 * 内容
+	 */
+	private String contents;
+	/**
+	 * 备着
+	 */
+	private String domainadd;
 
 }

@@ -25,9 +25,12 @@ public class LegislationsEntity implements Serializable {
 	@TableId
 	private Integer id;
 	/**
-	 * 标题
+	 * 根据区域
 	 */
-	private String title;
+	private String zone;
+	/**
+	 * 上传时间
+	 */private String title;
 	/**
 	 * 上传时间
 	 */
