@@ -9,6 +9,7 @@
         <result property="qyname" column="qyname"/>
         <result property="address" column="address"/>
         <result property="safetyzdls" column="safetyzdls"/>
+        <result property="safetybzgf" column="safetybzgf"/>
         <result property="safetyzdzx" column="safetyzdzx"/>
         <result property="safetyyhzl" column="safetyyhzl"/>
         <result property="safetyfysy" column="safetyfysy"/>

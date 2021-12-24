@@ -11,6 +11,7 @@
         <result property="hjappraise" column="hjappraise"/>
         <result property="replynumber" column="replynumber"/>
         <result property="yjyabanumber" column="yjyabanumber"/>
+        <result property="fwjynumber" column="fwjynumber"/>
         <result property="pwxkznumber" column="pwxkznumber"/>
         <result property="psxkzumber" column="psxkzumber"/>
         <result property="checkid" column="checkid"/>

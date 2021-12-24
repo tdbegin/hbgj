@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="io.hbgj.modules.sys.dao.AnnnewsDao">
+<mapper namespace="io.hbgj.modules.sys.dao.CjgsywpjDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="io.hbgj.modules.sys.entity.AnnnewsEntity" id="annnewsMap">
-        <result property="newid" column="newid"/>
+    <resultMap type="io.hbgj.modules.sys.entity.CjgsywpjEntity" id="cjgsywpjMap">
+        <result property="id" column="id"/>
         <result property="parentname" column="parentname"/>
         <result property="newtitle" column="newtitle"/>
         <result property="newdate" column="newdate"/>
         <result property="newabstract" column="newabstract"/>
         <result property="newdesc" column="newdesc"/>
-        <result property="firstname" column="firstname"/>
         <result property="domainadd" column="domainadd"/>
     </resultMap>
 
 
     <select id="findByName" resultType="Map" parameterType="string">
-    SELECT a.newid,a.parentname,a.newtitle,a.newdate,a.newabstract,a.firstname FROM annnews a WHERE parentname = #{parentname} and firstname= #{firstname} order by newdate desc
-    </select>
-
-    <select id="findByHtName" resultType="Map" parameterType="string">
-        SELECT * FROM annnews WHERE parentname = #{parentname} order by newdate desc
+        SELECT * FROM cjgsywpj WHERE parentname = #{parentname} order by newdate desc
     </select>
 
 </mapper>

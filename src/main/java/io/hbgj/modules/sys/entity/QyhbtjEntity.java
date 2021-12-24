@@ -45,6 +45,10 @@ public class QyhbtjEntity implements Serializable {
 	 */
 	private String yjyabanumber;
 	/**
+	 * 危废经营许可证编号
+	 */
+	private String fwjynumber;
+	/**
 	 * 排污许可证编号
 	 */
 	private String pwxkznumber;

@@ -33,9 +33,13 @@ public class QyaqtjEntity implements Serializable {
 	 */
 	private String address;
 	/**
-	 * 安全生产责任制制定和落实情况，安全生产标准规范执行情况
+	 * 安全生产责任制制定和落实情况
 	 */
 	private String safetyzdls;
+	/**
+	 * 安全生产标准规范执行情况
+	 */
+	private String safetybzgf;
 	/**
 	 * 安全生产规章制度制定和执行情况
 	 */
