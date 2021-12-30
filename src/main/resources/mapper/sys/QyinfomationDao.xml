@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="io.hbgjjk.modules.sys.dao.QyinfomationDao">
+<mapper namespace="io.hbgj.modules.sys.dao.QyinfomationDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.hbgj.modules.sys.entity.QyinfomationEntity" id="qyinfomationMap">
-        <result property="zid" column="zid"/>
         <result property="id" column="id"/>
-        <result property="name" column="name"/>
+        <result property="qyname" column="qyname"/>
+        <result property="qyipo" column="qyipo"/>
+        <result property="encredit" column="encredit"/>
+        <result property="authinfo" column="authinfo"/>
+        <result property="eninfopublic" column="eninfopublic"/>
         <result property="legalper" column="legalper"/>
         <result property="registeredcap" column="registeredcap"/>
         <result property="companytype" column="companytype"/>
@@ -30,5 +33,9 @@
         <result property="tradeinfo" column="tradeinfo"/>
     </resultMap>
 
+
+    <select id="findAllList" resultType="map">
+        SELECT q.id,q.qyipo,q.encredit,q.authinfo,q.eninfopublic,q.qyname FROM qyinfomation AS q
+    </select>
 
 </mapper>

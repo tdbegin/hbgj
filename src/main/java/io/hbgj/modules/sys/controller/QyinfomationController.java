@@ -1,11 +1,12 @@
 package io.hbgj.modules.sys.controller;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
 import io.hbgj.modules.sys.entity.QyinfomationEntity;
+import io.hbgj.modules.sys.oauth2.ListToPage;
 import io.hbgj.modules.sys.service.QyinfomationService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,11 @@ public class QyinfomationController {
     @RequestMapping("/list")
 //    @RequiresPermissions("hbgjjk:qyinfomation:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = qyinfomationService.queryPage(params);
-
-        return R.ok().put("page", page);
+        Integer limit =  Integer.valueOf(String.valueOf(params.get("limit"))) ;
+        Integer page1 = Integer.valueOf(String.valueOf(params.get("page"))) ;
+        List<HashMap> list =qyinfomationService.findAllList();
+        Page pages = ListToPage.getPages(page1, limit, list);
+        return R.ok().put("page", pages);
     }
 
 

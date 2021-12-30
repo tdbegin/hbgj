@@ -20,15 +20,27 @@ public class QyinfomationEntity implements Serializable {
 
 
     @TableId
-    private Integer zid;
-	/**
-	 * 
-	 */
 	private Integer id;
+	/**
+	 * 上市
+	 */
+	private String qyipo;
+	/**
+	 * 环境信用
+	 */
+	private String encredit;
+	/**
+	 * 认证信息
+	 */
+	private String authinfo;
+	/**
+	 * 环境信息公开透明度
+	 */
+	private String eninfopublic;
 	/**
 	 * 名称
 	 */
-	private String name;
+	private String qyname;
 	/**
 	 * 法定代表人姓名
 	 */

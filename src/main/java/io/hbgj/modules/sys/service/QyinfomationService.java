@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.modules.sys.entity.QyinfomationEntity;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,8 @@ import java.util.Map;
 public interface QyinfomationService extends IService<QyinfomationEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<HashMap> findAllList();
+
 }
 

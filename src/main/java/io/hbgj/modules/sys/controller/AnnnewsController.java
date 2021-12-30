@@ -11,6 +11,7 @@ import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
 import io.hbgj.modules.sys.entity.AnnnewsEntity;
 import io.hbgj.modules.sys.entity.FilenameEntity;
+import io.hbgj.modules.sys.oauth2.ListToPage;
 import io.hbgj.modules.sys.service.AnnnewsService;
 import io.hbgj.modules.sys.service.FilenameService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -55,55 +56,10 @@ public class AnnnewsController {
         Integer limit =  Integer.valueOf(String.valueOf(params.get("limit"))) ;
         Integer page1 = Integer.valueOf(String.valueOf(params.get("page"))) ;
         List<HashMap> list =annnewsService.findByName(parentname,firstname);
-        Page pages = getPages(page1, limit, list);
+        Page pages = ListToPage.getPages(page1, limit, list);
         return R.ok().put("page", pages);
     }
 
-/*    @RequestMapping("/htlist")
-//    @RequiresPermissions("hbgjjk.modules.sys:annnews:list")
-    public R htlist(@RequestParam Map<String, Object> params){
-        String parentname = String.valueOf(params.get("parentname"));
-        if (parentname==null){
-            return R.error("请选择分类");
-        }
-        Integer limit =  Integer.valueOf(String.valueOf(params.get("limit"))) ;
-        Integer page1 = Integer.valueOf(String.valueOf(params.get("page"))) ;
-        List<HashMap> list =annnewsService.findByHtName(parentname);
-        Page pages = getPages(page1, limit, list);
-        return R.ok().put("page", pages);
-    }*/
-
-    //listtopage
-    private Page getPages(Integer currentPage, Integer pageSize, List list) {
-        Page page = new Page();
-        int size = list.size();
-
-        if(pageSize > size) {
-            pageSize = size;
-        }
-        if (pageSize==0){
-            pageSize=1;
-        }
-        // 求出最大页数，防止currentPage越界
-        int maxPage = size % pageSize == 0 ? size / pageSize : size / pageSize + 1;
-
-        if(currentPage > maxPage) {
-            currentPage = maxPage;
-        }
-
-        // 当前页第一条数据的下标
-        int curIdx = currentPage > 1 ? (currentPage - 1) * pageSize : 0;
-
-        List pageList = new ArrayList();
-
-        // 将当前页的数据放进pageList
-        for(int i = 0; i < pageSize && curIdx + i < size; i++) {
-            pageList.add(list.get(curIdx + i));
-        }
-
-        page.setCurrent(currentPage).setSize(pageSize).setTotal(list.size()).setRecords(pageList);
-        return page;
-    }
 
 
     /**

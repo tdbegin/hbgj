@@ -3,6 +3,7 @@ package io.hbgj.modules.sys.controller;
 import java.util.*;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.hbgj.modules.sys.oauth2.ListToPage;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,43 +43,10 @@ public class CjgsywpjController {
         Integer limit =  Integer.valueOf(String.valueOf(params.get("limit"))) ;
         Integer page1 = Integer.valueOf(String.valueOf(params.get("page"))) ;
         List<HashMap> list =cjgsywpjService.findByName(parentname);
-        Page pages = getPages(page1, limit, list);
+        Page pages =ListToPage.getPages(page1, limit, list);
         return R.ok().put("page", pages);
         
     }
-
-    //listtopage
-    private Page getPages(Integer currentPage, Integer pageSize, List list) {
-        Page page = new Page();
-        int size = list.size();
-
-        if(pageSize > size) {
-            pageSize = size;
-        }
-        if (pageSize==0){
-            pageSize=1;
-        }
-        // 求出最大页数，防止currentPage越界
-        int maxPage = size % pageSize == 0 ? size / pageSize : size / pageSize + 1;
-
-        if(currentPage > maxPage) {
-            currentPage = maxPage;
-        }
-
-        // 当前页第一条数据的下标
-        int curIdx = currentPage > 1 ? (currentPage - 1) * pageSize : 0;
-
-        List pageList = new ArrayList();
-
-        // 将当前页的数据放进pageList
-        for(int i = 0; i < pageSize && curIdx + i < size; i++) {
-            pageList.add(list.get(curIdx + i));
-        }
-
-        page.setCurrent(currentPage).setSize(pageSize).setTotal(list.size()).setRecords(pageList);
-        return page;
-    }
-
 
     /**
      * 信息
