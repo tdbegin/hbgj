@@ -46,6 +46,18 @@ public class QyinfomationController {
         return R.ok().put("page", pages);
     }
 
+    @RequestMapping("/tjlist")
+//    @RequiresPermissions("hbgjjk:qyinfomation:list")
+    public R tjlist(@RequestParam Map<String, Object> params){
+        Integer limit =  Integer.valueOf(String.valueOf(params.get("limit"))) ;
+        Integer page1 = Integer.valueOf(String.valueOf(params.get("page"))) ;
+//不成功就用new hashmap
+        List<Map> list =qyinfomationService.findByPar(params);
+        System.out.println("111");
+//        Page pages = ListToPage.getPages(page1, limit, list);
+        return R.ok().put("page", list);
+    }
+
 
     /**
      * 信息

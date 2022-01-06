@@ -11,6 +11,7 @@
         <result property="introduction" column="introduction"/>
         <result property="linkname" column="linkname"/>
         <result property="linkmumber" column="linkmumber"/>
+        <result property="categorys" column="categorys"/>
         <result property="fallback" column="fallback"/>
     </resultMap>
 

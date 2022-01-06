@@ -9,6 +9,7 @@ import io.hbgj.common.utils.R;
 import io.hbgj.modules.sys.entity.QyregisterEntity;
 import io.hbgj.modules.sys.oauth2.Md5Util;
 import io.hbgj.modules.sys.service.QyregisterService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -83,7 +84,12 @@ public class QyregisterController {
      */
     @RequestMapping("/update")
 //    @RequiresPermissions("generator:qyregister:update")
-    public R update(@RequestBody QyregisterEntity qyregister){
+    public R update(@RequestBody QyregisterEntity qyregister) throws Exception {
+        String oldpassword = qyregister.getPassword();
+        if (StringUtils.isNotEmpty(oldpassword)){
+        String password = Md5Util.encodeByMd5(oldpassword);
+        qyregister.setPassword(password);
+        }
 		qyregisterService.updateById(qyregister);
 
         return R.ok();

@@ -21,5 +21,6 @@ public interface QyinfomationService extends IService<QyinfomationEntity> {
 
     List<HashMap> findAllList();
 
+    List<Map> findByPar(Map<String, Object> params);
 }
 

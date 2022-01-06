@@ -1,11 +1,16 @@
 package io.hbgj.modules.sys.controller;
 
+import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.alibaba.druid.util.StringUtils;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
+import io.hbgj.modules.sys.entity.FilenameEntity;
 import io.hbgj.modules.sys.entity.PolintroEntity;
+import io.hbgj.modules.sys.service.FilenameService;
 import io.hbgj.modules.sys.service.PolintroService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +36,9 @@ public class PolintroController {
     @Autowired
     private PolintroService polintroService;
 
+    @Autowired
+    private FilenameService filenameService;
+
     /**
      * 列表
      */
@@ -50,8 +58,15 @@ public class PolintroController {
     //@RequiresPermissions("hbgj.modules.sys:polintro:info")
     public R info(@PathVariable("newid") Integer newid){
 		PolintroEntity polintro = polintroService.getById(newid);
+        String domainadd = polintro.getNewimagepath();
+        if (StringUtils.isEmpty(domainadd)){
+            return R.ok().put("polintro", polintro);
+        }
+        FilenameEntity byDom = filenameService.getByDom(domainadd);
+        String filename = byDom.getFilename().substring(4);
 
-        return R.ok().put("polintro", polintro);
+        return R.ok().put("polintro", polintro).put("filename", filename);
+
     }
 
     /**
@@ -82,6 +97,7 @@ public class PolintroController {
     @RequestMapping("/delete")
     //@RequiresPermissions("hbgj.modules.sys:polintro:delete")
     public R delete(@RequestBody Integer[] newids){
+
 		polintroService.removeByIds(Arrays.asList(newids));
 
         return R.ok();

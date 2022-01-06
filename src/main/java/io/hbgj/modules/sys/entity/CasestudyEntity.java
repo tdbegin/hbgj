@@ -44,5 +44,9 @@ public class CasestudyEntity implements Serializable {
 	 * 图片路径
 	 */
 	private String newimagepath;
+	/**
+	 * 文件名
+	 */
+	private String wjname;
 
 }

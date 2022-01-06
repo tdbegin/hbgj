@@ -38,4 +38,19 @@
         SELECT q.id,q.qyipo,q.encredit,q.authinfo,q.eninfopublic,q.qyname FROM qyinfomation AS q
     </select>
 
+
+    <select id="findByPar" parameterType="map" resultType="map">
+        select q.id,q.qyipo,q.encredit,q.authinfo,q.eninfopublic,q.qyname from  qyinfomation AS q
+        <where>
+            <if test="null != qyname">
+                and qymane= #{qyname}
+            </if>
+            <if test="null != qyipo">
+                and qyipo= #{qyipo}
+            </if>
+            <if test="null != encredit">
+                and encredit= #{encredit}
+            </if>
+        </where>
+    </select>
 </mapper>

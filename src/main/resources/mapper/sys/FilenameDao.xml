@@ -18,7 +18,7 @@
     </select>
 
     <select id="findByaddress" resultType="io.hbgj.modules.sys.entity.FilenameEntity" parameterType="integer">
-        select * from filename where domainadd =(SELECT zjintro.picaddress FROM zjintro WHERE id = #{id})
+        select * from filename where domainadd =(SELECT annnews.domainadd FROM annnews WHERE newid = #{id})
     </select>
 
     <select id="getByDom" resultType="io.hbgj.modules.sys.entity.FilenameEntity" parameterType="string">

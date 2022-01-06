@@ -82,16 +82,16 @@ hbgj:
 gorit:
   file:
     root:
-      path: D:\workspace\hbgj\src\main\resources\static\images\
-      path1: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev1\
-      path2: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev2\
-      path3: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev3\
-      path4: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev4\
-      path5: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev5\
-#      path: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\images\
-#      path1: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev1\
-#      path2: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev2\
-#      path3: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev3\
-#      path4: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev4\
-#      path5: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev5\
+#      path: D:\workspace\hbgj\src\main\resources\static\images\
+#      path1: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev1\
+#      path2: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev2\
+#      path3: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev3\
+#      path4: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev4\
+#      path5: D:\workspace\hbgj\src\main\resources\static\wjfiles\dev5\
+      path: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\images\
+      path1: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev1\
+      path2: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev2\
+      path3: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev3\
+      path4: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev4\
+      path5: C:\Java\apache-tomcat-8.5.27\webapps\hbgj\WEB-INF\classes\static\wjfiles\dev5\
 # 电脑端和服务器地址

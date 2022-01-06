@@ -45,6 +45,10 @@ public class QyfcqyEntity implements Serializable {
 	 */
 	private String linkmumber;
 	/**
+	 * 类别
+	 */
+	private String categorys;
+	/**
 	 * 备选
 	 */
 	private String fallback;

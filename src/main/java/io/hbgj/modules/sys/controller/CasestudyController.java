@@ -3,10 +3,13 @@ package io.hbgj.modules.sys.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.alibaba.druid.util.StringUtils;
 import io.hbgj.common.utils.PageUtils;
 import io.hbgj.common.utils.R;
 import io.hbgj.modules.sys.entity.CasestudyEntity;
+import io.hbgj.modules.sys.entity.FilenameEntity;
 import io.hbgj.modules.sys.service.CasestudyService;
+import io.hbgj.modules.sys.service.FilenameService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +33,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CasestudyController {
     @Autowired
     private CasestudyService casestudyService;
+    @Autowired
+    private FilenameService filenameService;
 
     /**
      * 列表
@@ -50,8 +55,14 @@ public class CasestudyController {
     //@RequiresPermissions("hbgj.modules.sys:casestudy:info")
     public R info(@PathVariable("newid") Integer newid){
 		CasestudyEntity casestudy = casestudyService.getById(newid);
+        String domainadd = casestudy.getNewimagepath();
+        if (StringUtils.isEmpty(domainadd)){
+            return R.ok().put("casestudy", casestudy);
+        }
+        FilenameEntity byDom = filenameService.getByDom(domainadd);
+        String filename = byDom.getFilename().substring(4);
 
-        return R.ok().put("casestudy", casestudy);
+        return R.ok().put("casestudy", casestudy).put("filename", filename);
     }
 
     /**
@@ -72,7 +83,6 @@ public class CasestudyController {
     //@RequiresPermissions("hbgj.modules.sys:casestudy:update")
     public R update(@RequestBody CasestudyEntity casestudy){
 		casestudyService.updateById(casestudy);
-
         return R.ok();
     }
 

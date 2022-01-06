@@ -81,11 +81,11 @@ public class FileController {
              dest = new File(filePath5 + newFileName);
                 filenameEntity.setFilepath(filePath5);
         }
-        String bjip = InetAddress.getLocalHost().getHostAddress();
-//        String bjip ="121.40.90.189";
+//        String bjip = InetAddress.getLocalHost().getHostAddress();
+        String bjip ="121.40.90.189";
         String portip= String.valueOf(requet.getLocalPort());
-        String dizhi = filenameEntity.getFilepath().substring(43);
-//        String dizhi = filenameEntity.getFilepath().substring(64);
+//        String dizhi = filenameEntity.getFilepath().substring(43);
+        String dizhi = filenameEntity.getFilepath().substring(64);
         filenameEntity.setDomainadd("http://"+bjip+":"+portip+"/hbgj"+dizhi+filenameEntity.getFilename());
         try {
             // 上传的文件被保存了
@@ -118,8 +118,8 @@ public class FileController {
 
        File dest = new File(filePath + newFileName);
        filenameEntity.setFilepath(filePath);
-       String bjip = InetAddress.getLocalHost().getHostAddress();
-//       String bjip ="121.40.90.189";
+//       String bjip = InetAddress.getLocalHost().getHostAddress();
+       String bjip ="121.40.90.189";
        String portip= String.valueOf(requet.getLocalPort());
 
        filenameEntity.setDomainadd("http://"+bjip+":"+portip+"/hbgj/images/"+filenameEntity.getFilename());

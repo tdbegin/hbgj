@@ -36,7 +36,7 @@ public class QyinfomationEntity implements Serializable {
 	/**
 	 * 环境信息公开透明度
 	 */
-	private String eninfopublic;
+	private Integer eninfopublic;
 	/**
 	 * 名称
 	 */

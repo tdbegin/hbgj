@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 
@@ -19,4 +20,5 @@ public interface QyinfomationDao extends BaseMapper<QyinfomationEntity> {
 
     List<HashMap> findAllList();
 
+    List<Map> findByPar(Map<String, Object> params);
 }

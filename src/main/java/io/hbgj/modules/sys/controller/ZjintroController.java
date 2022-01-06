@@ -87,20 +87,6 @@ public class ZjintroController {
     @RequestMapping("/delete")
     //@RequiresPermissions("hbgj.modules.sys:zjintro:delete")
     public R delete(@RequestBody Integer[] ids){
-        List<Integer> integers = Arrays.asList(ids);
-
-        for (int i = 0; i < integers.size(); i++) {
-            FilenameEntity filename = filenameService.findByaddress(integers.get(i));
-            if (null !=filename){
-                File folder = new File(filename.getFilepath());
-                File[] files = folder.listFiles();
-                for(File file:files){
-                    if(file.getName().equals(filename.getFilename())){
-                        file.delete();
-                    }
-                }
-            }
-        }
 		zjintroService.removeByIds(Arrays.asList(ids));
 
         return R.ok();

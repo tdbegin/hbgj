@@ -11,6 +11,7 @@ import io.hbgj.modules.sys.entity.QyregisterEntity;
 import io.hbgj.modules.sys.oauth2.Md5Util;
 import io.hbgj.modules.sys.service.PerregisterService;
 import io.hbgj.modules.sys.service.QyregisterService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -86,8 +87,13 @@ public class PerregisterController {
      */
     @RequestMapping("/update")
 //    @RequiresPermissions("generator:perregister:update")
-    public R update(@RequestBody PerregisterEntity perregister){
-		perregisterService.updateById(perregister);
+    public R update(@RequestBody PerregisterEntity perregister) throws Exception {
+        String oldpassword = perregister.getPassword();
+        if (StringUtils.isNotEmpty(oldpassword)){
+            String password = Md5Util.encodeByMd5(oldpassword);
+            perregister.setPassword(password);
+        }
+        perregisterService.updateById(perregister);
 
         return R.ok();
     }

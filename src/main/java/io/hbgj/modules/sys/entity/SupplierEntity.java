@@ -47,6 +47,10 @@ public class SupplierEntity implements Serializable {
 	/**
 	 * 备着
 	 */
+	private String categorys;
+	/**
+	 * 类别
+	 */
 	private String fallback;
 
 }

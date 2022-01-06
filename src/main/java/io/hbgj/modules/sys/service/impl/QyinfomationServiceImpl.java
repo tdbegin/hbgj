@@ -37,4 +37,10 @@ public class QyinfomationServiceImpl extends ServiceImpl<QyinfomationDao, Qyinfo
         return qyinfomationDao.findAllList();
     }
 
+    @Override
+    public List<Map> findByPar(Map<String, Object> params) {
+
+        return qyinfomationDao.findByPar(params);
+    }
+
 }
