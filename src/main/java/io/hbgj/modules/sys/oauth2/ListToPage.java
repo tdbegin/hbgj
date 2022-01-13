@@ -8,6 +8,13 @@ import java.util.List;
 public class ListToPage {
     //listtopage
     public static Page getPages(Integer currentPage, Integer pageSize, List list) {
+        if (currentPage ==null){
+            currentPage=1;
+        }
+        if (pageSize ==null){
+            pageSize=10;
+        }
+
         Page page = new Page();
         int size = list.size();
 

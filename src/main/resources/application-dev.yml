@@ -3,8 +3,8 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         druid:
             driver-class-name: com.mysql.cj.jdbc.Driver
-#            url: jdbc:mysql://192.168.0.77:3306/hbgj?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-            url: jdbc:mysql://121.40.90.189:3306/hbgj?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+            url: jdbc:mysql://192.168.0.77:3306/hbgj?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#            url: jdbc:mysql://121.40.90.189:3306/hbgj?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
             username: root
             password: root
             initial-size: 10

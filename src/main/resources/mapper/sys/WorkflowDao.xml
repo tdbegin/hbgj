@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.hbgj.modules.sys.dao.WorkflowDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.hbgj.modules.sys.entity.WorkflowEntity" id="workflowMap">
+        <result property="id" column="id"/>
+        <result property="flowpath" column="flowpath"/>
+        <result property="xmname" column="xmname"/>
+        <result property="times" column="times"/>
+        <result property="linker" column="linker"/>
+        <result property="fallback" column="fallback"/>
+    </resultMap>
+
+    <select id="findByPar" resultType="Map" parameterType="string">
+        SELECT * FROM workflow WHERE xmname= #{xmname}
+    </select>
+
+    <select id="findPro" resultType="WorkflowEntity" parameterType="string">
+        SELECT * FROM workflow GROUP BY xmname
+    </select>
+
+</mapper>

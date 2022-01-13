@@ -29,6 +29,6 @@
     </resultMap>
 
     <select id="login" resultType="io.hbgj.modules.sys.entity.QyregisterEntity" parameterType="java.util.Map">
-        select * from qyregister where telphone=#{telphone} and password=#{password}
+        select * from qyregister where telphone=#{telphone}
     </select>
 </mapper>

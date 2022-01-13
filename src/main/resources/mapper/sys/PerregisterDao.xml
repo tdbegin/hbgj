@@ -18,7 +18,7 @@
 
 
     <select id="login" resultType="io.hbgj.modules.sys.entity.PerregisterEntity" parameterType="java.util.Map">
-        select * from perregister where telphone=#{telphone} and password=#{password}
+        select * from perregister where telphone=#{telphone}
     </select>
 
 </mapper>

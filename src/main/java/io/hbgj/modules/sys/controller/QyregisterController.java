@@ -69,7 +69,7 @@ public class QyregisterController {
         qyregister.setPassword(password);
         HashMap<String, Object> map = new HashMap<>();
         map.put("telphone",qyregister.getTelphone() );
-        map.put("password",qyregister.getPassword() );
+//        map.put("password",qyregister.getPassword() );
         QyregisterEntity qyregisterEntity= qyregisterService.login(map);
         if (qyregisterEntity!=null){
             return R.error("账号已注册");

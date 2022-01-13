@@ -72,7 +72,7 @@ public class PerregisterController {
         perregister.setPassword(password);
         HashMap<String, Object> map = new HashMap<>();
         map.put("telphone",perregister.getTelphone() );
-        map.put("password",perregister.getPassword() );
+//        map.put("password",perregister.getPassword() );
         PerregisterEntity perregisterEntity =  perregisterService.login(map);
         if (perregisterEntity!=null){
             return R.error("账号已注册");
