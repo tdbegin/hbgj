@@ -5,6 +5,7 @@ import java.util.*;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.hbgj.modules.sys.oauth2.ListToPage;
+import io.hbgj.modules.sys.service.WorkflowsonService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,8 @@ import io.hbgj.common.utils.R;
 public class WorkflowController {
     @Autowired
     private WorkflowService workflowService;
+    @Autowired
+    private WorkflowsonService workflowsonService;
 
     /**
      * 列表
@@ -55,10 +58,9 @@ public class WorkflowController {
     //@RequiresPermissions("hbgj.modules.sys:workflow:info")
     public R info(@PathVariable("id") Integer id){
 		WorkflowEntity workflow = workflowService.getById(id);
-        String xmname = workflow.getXmname();
-        List<HashMap> list =workflowService.findByPar(xmname);
-//        list.remove(0);
-        return R.ok().put("list", list);
+//        String xmname = workflow.getXmname();
+//        List<HashMap> list =workflowsonService.findAll(xmname);
+        return R.ok().put("workflow", workflow);
     }
 
     /**
@@ -67,9 +69,9 @@ public class WorkflowController {
     @RequestMapping("/save")
     //@RequiresPermissions("hbgj.modules.sys:workflow:save")
     public R save(@RequestBody WorkflowEntity workflow){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String dateTime = sdf.format(System.currentTimeMillis());
-        workflow.setTimes(dateTime);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String dateTime = sdf.format(System.currentTimeMillis());
+//        workflow.setTimes(dateTime);
 		workflowService.save(workflow);
         return R.ok();
     }
@@ -96,4 +98,11 @@ public class WorkflowController {
         return R.ok();
     }
 
+    @RequestMapping("/deleteAll")
+    //@RequiresPermissions("hbgj.modules.sys:workflow:delete")
+    public R deleteAll(@RequestParam Map<String, Object> params){
+        String xmname = String.valueOf(params.get("xmname"));
+        workflowService.deleteAll(xmname);
+        return R.ok();
+    }
 }

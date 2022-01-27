@@ -2,7 +2,7 @@ package io.hbgj.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.hbgj.common.utils.PageUtils;
-import io.hbgj.modules.sys.entity.WorkflowEntity;
+import io.hbgj.modules.sys.entity.WorkflowsonEntity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,16 +13,12 @@ import java.util.Map;
  *
  * @author ${author}
  * @email ${email}
- * @date 2022-01-12 09:01:34
+ * @date 2022-01-14 10:19:28
  */
-public interface WorkflowService extends IService<WorkflowEntity> {
+public interface WorkflowsonService extends IService<WorkflowsonEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 
-    List<HashMap> findByPar(String xmname);
-
-    List<HashMap> findPro();
-
-    void deleteAll(String xmname);
+    List<HashMap> findAll(String xmname);
 }
 

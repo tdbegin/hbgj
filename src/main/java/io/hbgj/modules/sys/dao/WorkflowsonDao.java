@@ -1,6 +1,6 @@
 package io.hbgj.modules.sys.dao;
 
-import io.hbgj.modules.sys.entity.WorkflowEntity;
+import io.hbgj.modules.sys.entity.WorkflowsonEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,14 +12,11 @@ import java.util.List;
  * 
  * @author ${author}
  * @email ${email}
- * @date 2022-01-12 09:01:34
+ * @date 2022-01-14 10:19:28
  */
 @Mapper
-public interface WorkflowDao extends BaseMapper<WorkflowEntity> {
+public interface WorkflowsonDao extends BaseMapper<WorkflowsonEntity> {
 
-    List<HashMap> findByPar(String xmname);
+    List<HashMap> findAll(String xmname);
 
-    List<HashMap> findPro();
-
-    void deleteAll(String xmname);
 }

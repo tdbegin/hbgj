@@ -14,11 +14,15 @@
     </resultMap>
 
     <select id="findByPar" resultType="Map" parameterType="string">
-        SELECT * FROM workflow WHERE xmname= #{xmname}
+        SELECT * FROM workflow WHERE xmname= #{xmname} order by times desc
     </select>
 
     <select id="findPro" resultType="WorkflowEntity" parameterType="string">
-        SELECT * FROM workflow GROUP BY xmname
+        SELECT * FROM workflow ORDER BY times DESC
     </select>
+
+    <delete id="deleteAll" parameterType="string">
+        delete from workflow where xmname=#{xmname}
+    </delete>
 
 </mapper>

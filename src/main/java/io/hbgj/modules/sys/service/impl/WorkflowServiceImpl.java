@@ -43,4 +43,9 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowDao, WorkflowEntity
         return workflowDao.findPro();
     }
 
+    @Override
+    public void deleteAll(String xmname) {
+         workflowDao.deleteAll(xmname);
+    }
+
 }

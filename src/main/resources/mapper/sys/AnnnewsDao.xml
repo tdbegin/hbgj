@@ -17,7 +17,7 @@
 
 
     <select id="findByName" resultType="Map" parameterType="string">
-    SELECT a.newid,a.parentname,a.newtitle,a.newdate,a.newabstract,a.firstname FROM annnews a WHERE parentname = #{parentname} and firstname= #{firstname} order by newdate desc
+    SELECT a.newid,a.parentname,a.newtitle,a.newdate,a.firstname FROM annnews a WHERE parentname = #{parentname} and firstname= #{firstname} order by newdate desc
     </select>
 
     <select id="findByHtName" resultType="Map" parameterType="string">
